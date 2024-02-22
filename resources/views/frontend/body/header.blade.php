@@ -27,7 +27,7 @@
                         @auth
                         <li>
                             <i class='bx bxs-user-pin'></i>
-                            <a href="/dashboard">Dashboard</a>
+                            <a href="/user">Dashboard</a>
                         </li>
                         <li>
                             <i class='bx bxs-log-out'></i>

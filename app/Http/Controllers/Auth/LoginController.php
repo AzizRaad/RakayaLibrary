@@ -24,7 +24,7 @@ class LoginController extends Controller
         if (auth()->attempt($data)) {
             return redirect('/');
         } else {
-            return redirect()->route('login');
+            return redirect()->route('login')->with('failure','Wrong Credentials , try again');
         }
     }
 

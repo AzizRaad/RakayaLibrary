@@ -18,11 +18,7 @@ class LoginRequest extends FormRequest
     {
         return [
             'username.required' => 'تعبئة خانة اسم المستخدم الزامية',
-            'username.min' => 'يجب ان يكون اسم المستخدم 5 حروف على الاقل',
-            'username.max' => 'يجب ان لا يتخطى اسم المستخدم 20 حرف',
             'password.required' => 'تعبئة خانة كلمة السر الزامية',
-            'password.min' => 'يجب ان تكون خانة كلمة السر 8 حروف على الاقل',
-            'password.max' => 'يجب ان لا تتخطى كلمة السر 16 حرف',
         ];
     }
 
@@ -34,8 +30,8 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => ['required', 'min:5', 'max:20'],
-            'password' => ['required', 'min:8', 'max:16'],
+            'username' => ['required'],
+            'password' => ['required'],
         ];
     }
 }

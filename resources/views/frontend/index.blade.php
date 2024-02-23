@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('frontend/assets/img/favicon.png') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <title>Rakaya Library</title>
 </head>
 <body>

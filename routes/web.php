@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Controllers\BooksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +31,13 @@ Route::controller(LoginController::class)
 Route::controller(RegisterController::class)
 ->group(function () {
     Route::get('/register','show')->name('register');
-    Route::post('register','store');
+    Route::post('/register','store');
 });
 
-Route::get('/user',[DashboardController::class, 'show']);
+Route::controller(BooksController::class)
+->group(function () {
+    Route::get('/uploadform','show');
+    Route::post('/uploadform','store');
+});
+
+Route::get('/user',[DashboardController::class, 'show'])->middleware('auth');

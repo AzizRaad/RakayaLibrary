@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('author');
-            $table->enum('status',['available','borrowed']);
+            $table->enum('status',['available','borrowed'])->default('available');
             $table->timestamps();
         });
     }

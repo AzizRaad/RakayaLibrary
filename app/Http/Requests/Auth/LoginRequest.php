@@ -17,8 +17,8 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
-            'username.required' => 'تعبئة خانة اسم المستخدم الزامية',
-            'password.required' => 'تعبئة خانة كلمة السر الزامية',
+            'username.required' => 'You cant leave username field empty',
+            'password.required' => 'you cant leave password field empty',
         ];
     }
 

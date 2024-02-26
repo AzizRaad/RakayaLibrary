@@ -41,3 +41,6 @@ Route::controller(BooksController::class)
 });
 
 Route::get('/user',[DashboardController::class, 'show'])->middleware('auth');
+// Route::get('/bookstable', function(){
+//     return view('livewire.data_table');
+// });

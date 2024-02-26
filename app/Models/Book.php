@@ -12,4 +12,8 @@ class Book extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $fillable = ['name','author'];
+
+    public function scopeSearch($query, $value) {
+        $query->Where('name','like',"%{$value}%")->orWhere('author','like',"%{$value}%");
+    }
 }

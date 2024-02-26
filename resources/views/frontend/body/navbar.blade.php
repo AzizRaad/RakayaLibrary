@@ -18,7 +18,7 @@
                         alt="Logo">
                 </a>
 
-                <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                <div class=" navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto">
                         <li class="nav-item">
                             <a href="/" class="nav-link active">
@@ -38,24 +38,15 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/buildings" class="nav-link">
-                                Buildings
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
                             <a href="/contact" class="nav-link">
                                 Contact
                             </a>
                         </li>
 
-                        <li class="nav-item-btn">
-                            <a href="#" class="default-btn btn-bg-one border-radius-5">Book Now</a>
-                        </li>
                     </ul>
 
                     <div class="nav-btn">
-                        <a href="/all-room" class="default-btn btn-bg-one border-radius-5">Book Now</a>
+                        <a href="/uploadform" class="default-btn btn-bg-one border-radius-5">UploadBook</a>
                     </div>
                 </div>
             </nav>

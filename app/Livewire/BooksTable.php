@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Book;
+use App\Models\Invoice;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -15,6 +16,14 @@ class BooksTable extends Component
     public $perPage = 5;
 
     public $status = '';
+
+    public function addToCart(Book $book){
+        $invoice = new Invoice();
+        $invoice->name = $book->name;
+        $invoice->author = $book->author;
+        $invoice->user_id = auth()->user()->id;
+        $invoice->save();
+    }
 
     public function render()
     {

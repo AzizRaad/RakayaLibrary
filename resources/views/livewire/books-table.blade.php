@@ -62,7 +62,7 @@
 
                                     <td class="px-4 py-3">{{ $book->created_at }}</td>
                                     <td class="px-4 py-3 flex items-center justify-end">
-                                        <button class="px-3 py-1 bg-red-500 text-white rounded">X</button>
+                                        <button wire:click="addToCart({{$book}})" class="px-3 py-1 bg-red-500 text-white rounded">X</button>
                                     </td>
                                 </tr>
                             @endforeach

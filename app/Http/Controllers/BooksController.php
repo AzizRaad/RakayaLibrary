@@ -13,7 +13,6 @@ class BooksController extends Controller
         $new_book = new Book();
         $new_book->name = $req['book_name'];
         $new_book->author = $req['author'];
-        $new_book->addMediaFromRequest('pdf_book')->toMediaCollection();
         $new_book->status = $req['status'];
         $new_book->save();
         return redirect('/');

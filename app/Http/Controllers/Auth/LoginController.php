@@ -36,6 +36,6 @@ class LoginController extends Controller
         auth()->logout();
         $req->session()->invalidate();
         $req->session()->regenerateToken();
-        return redirect('/');
+        return redirect('/login');
     }
 }

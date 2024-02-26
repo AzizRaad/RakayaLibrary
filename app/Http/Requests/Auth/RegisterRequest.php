@@ -18,13 +18,13 @@ class RegisterRequest extends FormRequest
     public function messages()
     {
         return [
-            'username.required' => 'تعبئة خانة اسم المستخدم الزامية',
-            'username.min' => 'يجب ان يكون اسم المستخدم 5 حروف على الاقل',
-            'username.max' => 'يجب ان لا يتخطى اسم المستخدم 20 حرف',
-            'email.required' => 'تعبئة خانة اسم المستخدم الزامية',
-            'password.required' => 'تعبئة خانة كلمة السر الزامية',
-            'password.min' => 'يجب ان تكون خانة كلمة السر 8 حروف على الاقل',
-            'password.max' => 'يجب ان لا تتخطى كلمة السر 16 حرف',
+            'username.required' => 'You cant leave username field empty',
+            'username.min' => 'username must be 5 characters at least',
+            'username.max' => 'username maximum characters are 20',
+            'email.required' => 'you cant leave email filed empty',
+            'password.required' => 'you cant leave password field empty',
+            'password.min' => 'password must be at least 8 characters',
+            'password.max' => 'Password maximum characters are 16',
         ];
     }
 

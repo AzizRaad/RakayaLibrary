@@ -15,7 +15,7 @@
                         <tbody>
                             @foreach ($invoices as $invoice)
                                 <tr class="border-b dark:border-neutral-500">
-                                    <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $invoice->id }}</td>
+                                    <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $loop->iteration }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $invoice->name }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $invoice->author }}</td>
                                     <td class="px-6 py-4">
@@ -31,7 +31,7 @@
         </div>
     </div>
     <button class="px-3 py-1 bg-yellow-600 text-white rounded">
-        <a href="{{ route('download.invoice',auth()->user()->id) }}">
+        <a href="{{ route('download.invoice', auth()->user()->id) }}">
             <i class="fa-solid fa-file-arrow-down"></i>
             Download Invoice
         </a>

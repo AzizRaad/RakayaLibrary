@@ -35,6 +35,46 @@ class BooksSeeder extends Seeder
                 'name'=>'xxx',
                 'author'=>'yyy'
             ],
+            //Book
+            [
+                'name'=>'Thaqafa',
+                'author'=>'UQU'
+            ],
+            //Book
+            [
+                'name'=>'AI',
+                'author'=>'Sadaia'
+            ],
+            //Book
+            [
+                'name'=>'Mathmatics',
+                'author'=>'MOE'
+            ],
+            //Book
+            [
+                'name'=>'xxx',
+                'author'=>'yyy'
+            ],
+            //Book
+            [
+                'name'=>'Thaqafa',
+                'author'=>'UQU'
+            ],
+            //Book
+            [
+                'name'=>'AI',
+                'author'=>'Sadaia'
+            ],
+            //Book
+            [
+                'name'=>'Mathmatics',
+                'author'=>'MOE'
+            ],
+            //Book
+            [
+                'name'=>'xxx',
+                'author'=>'yyy'
+            ],
         ]);
     }
 }

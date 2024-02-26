@@ -19,9 +19,8 @@
                                     <td class="whitespace-nowrap px-6 py-4">{{ $invoice->name }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $invoice->author }}</td>
                                     <td class="px-6 py-4">
-                                        <button
-                                        wire:click="delete({{$invoice->id}})"
-                                        class="px-3 py-1 bg-red-500 text-white rounded">X</button>
+                                        <button wire:click="delete({{ $invoice->id }})"
+                                            class="px-3 py-1 bg-red-500 text-white rounded">X</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -31,4 +30,10 @@
             </div>
         </div>
     </div>
+    <button class="px-3 py-1 bg-yellow-600 text-white rounded">
+        <a href="{{ route('download.invoice',auth()->user()->id) }}">
+            <i class="fa-solid fa-file-arrow-down"></i>
+            Download Invoice
+        </a>
+    </button>
 </div>

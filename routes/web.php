@@ -21,9 +21,7 @@ use App\Livewire\InvoiceTable;
 Route::get('/', function () {
     return view('frontend.home.data_table');
 });
-Route::get('/invoice', function () {
-    return view('frontend.home.invoice');
-});
+
 
 Route::controller(LoginController::class)
     ->group(function () {
@@ -44,9 +42,17 @@ Route::controller(BooksController::class)
         Route::post('/uploadform', 'store');
     });
 
+Route::controller(InvoiceController::class)
+    ->group(function () {
+        Route::get('/invoice', 'show');
+        Route::get('/download/invoice/{id}', 'store')->name('download.invoice');
+    });
+
 Route::get('/user', function () {
     return 'Hi ' . auth()->user()->username;
 });
+
+
 
 // Route::get('/bookstable', function(){
 //     return view('livewire.data_table');

@@ -19,6 +19,13 @@
                                 placeholder="Search" required="">
                         </div>
                     </div>
+                    <div>
+                        @if (session()->has('success'))
+                            <div class="px-3 py-3 bg-green-300 rounded text-black">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                    </div>
                     <div class="flex space-x-3">
                         <div class="flex space-x-3 items-center">
                             <label class="w-40 text-sm font-medium text-gray-900">Book Status :</label>
@@ -60,7 +67,7 @@
                                             {{ $book->status }}</td>
                                     @endif
                                     <td class="px-4 py-3">{{ $book->created_at }}</td>
-                                    
+
                                     <td class="px-4 py-3 flex items-center justify-end">
                                         <button wire:click="addToCart({{ $book }})"
                                             class="px-3 py-1 bg-blue-500 text-white rounded">

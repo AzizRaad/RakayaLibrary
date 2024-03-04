@@ -27,6 +27,7 @@ class BooksTable extends Component
         $book_status = Book::find($book->id);
         $book_status->status = 'Borrowed';
         $book_status->save();
+        session()->flash('success',' Book Added to your Invoice ');
     }
 
     public function render()

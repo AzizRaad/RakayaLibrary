@@ -8,120 +8,151 @@
     <title>RakayaLibrary</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#6366F1',
+                        accent: '#818CF8',
+                        light: '#F9FAFB',
+                        dark: '#1F2937',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+            background-color: #F9FAFB;
+        }
+        .nav-link {
+            @apply px-4 py-2 rounded-lg transition-all duration-200 hover:bg-indigo-50 hover:text-primary;
+        }
+        .btn-primary {
+            @apply bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-all duration-200;
+        }
+    </style>
     {{-- <link rel="stylesheet" href="{{ asset('uploadbookform.css') }}"> --}}
 </head>
 
-<body>
+<body class="flex flex-col min-h-screen">
 
     @auth
-        <header>
+        <header class="bg-white shadow-sm">
             <!-- Navigation bar -->
-            <nav class="relative flex w-full items-center justify-between bg-white py-2 text-neutral-600 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 dark:text-neutral-200 md:flex-wrap md:justify-start"
+            <nav class="container mx-auto flex items-center justify-between py-4 px-6 lg:px-8"
                 data-te-navbar-ref>
-                <div class="flex w-full flex-wrap items-center justify-between px-3">
-                    <div class="flex items-center">
-                        <!-- Hamburger menu button -->
-                        <button
-                            class="border-0 bg-transparent px-2 text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:hidden"
-                            type="button" data-te-collapse-init data-te-target="#navbarSupportedContentY"
-                            aria-controls="navbarSupportedContentY" aria-expanded="false" aria-label="Toggle navigation">
-                            <!-- Hamburger menu icon -->
-                            <span class="[&>svg]:w-5">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="h-7 w-7">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                                </svg>
-                            </span>
-                        </button>
-                    </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/" class="text-xl font-bold text-primary">RakayaLibrary</a>
+                </div>
 
-                    <!-- Navigation links -->
-                    <div class="!visible hidden grow basis-[100%] items-center lg:!flex lg:basis-auto"
-                        id="navbarSupportedContentY" data-te-collapse-item>
-                        <ul class="mr-auto flex flex-col lg:flex-row" data-te-navbar-nav-ref>
-                            <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                                <a class="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white lg:p-2 [&.active]:text-black/90"
-                                    href="/" data-te-nav-link-ref data-te-ripple-init
-                                    data-te-ripple-color="light">Home</a>
-                            </li>
-                            <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                                <a class="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white lg:p-2 [&.active]:text-black/90"
-                                    href="{{ route('invoice') }}" data-te-nav-link-ref data-te-ripple-init
-                                    data-te-ripple-color="light">View Invoice</a>
-                            </li>
-                            @if (Auth::user()->isAdmin())
-                                <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                                    <a class="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white lg:p-2 [&.active]:text-black/90"
-                                        href="{{ route('upload.book') }}" data-te-nav-link-ref data-te-ripple-init
-                                        data-te-ripple-color="light">Upload-A-Book</a>
-                                </li>
-                            @endif
-                            <li class="mb-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                                <a class="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white lg:p-2 [&.active]:text-black/90"
-                                    href="{{ route('logout') }}" data-te-nav-link-ref data-te-ripple-init
-                                    data-te-ripple-color="light">SignOut</a>
-                            </li>
-                        </ul>
-                    </div>
+                <!-- Mobile menu button -->
+                <div class="flex lg:hidden">
+                    <button
+                        class="text-gray-600 hover:text-primary focus:outline-none"
+                        type="button" data-te-collapse-init data-te-target="#navbarSupportedContentY"
+                        aria-controls="navbarSupportedContentY" aria-expanded="false" aria-label="Toggle navigation">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Navigation links -->
+                <div class="hidden lg:flex items-center space-x-2"
+                    id="navbarSupportedContentY" data-te-collapse-item>
+                    <a class="nav-link" href="/" data-te-nav-link-ref>Home</a>
+                    <a class="nav-link" href="{{ route('invoice') }}" data-te-nav-link-ref>View Invoice</a>
+                    @if (Auth::user()->isAdmin())
+                        <a class="nav-link" href="{{ route('upload.book') }}" data-te-nav-link-ref>Upload Book</a>
+                    @endif
+                    <a class="nav-link bg-red-50 text-red-600 hover:bg-red-100" href="{{ route('logout') }}" data-te-nav-link-ref>Sign Out</a>
                 </div>
             </nav>
+            
+            <!-- Mobile menu (hidden by default) -->
+            <div class="lg:hidden hidden" id="navbarSupportedContentY">
+                <div class="px-4 py-3 space-y-2">
+                    <a class="block nav-link" href="/">Home</a>
+                    <a class="block nav-link" href="{{ route('invoice') }}">View Invoice</a>
+                    @if (Auth::user()->isAdmin())
+                        <a class="block nav-link" href="{{ route('upload.book') }}">Upload Book</a>
+                    @endif
+                    <a class="block nav-link bg-red-50 text-red-600 hover:bg-red-100" href="{{ route('logout') }}">Sign Out</a>
+                </div>
+            </div>
         </header>
     @else
-        <header>
+        <header class="bg-white shadow-sm">
             <!-- Navigation bar -->
-            <nav class="relative flex w-full items-center justify-between bg-white py-2 text-neutral-600 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 dark:text-neutral-200 md:flex-wrap md:justify-center"
+            <nav class="container mx-auto flex items-center justify-between py-4 px-6 lg:px-8"
                 data-te-navbar-ref>
-                <div class="flex w-full flex-wrap items-center justify-between px-3">
-                    <div class="flex items-center">
-                        <!-- Hamburger menu button -->
-                        <button
-                            class="border-0 bg-transparent px-2 text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:hidden"
-                            type="button" data-te-collapse-init data-te-target="#navbarSupportedContentY"
-                            aria-controls="navbarSupportedContentY" aria-expanded="false" aria-label="Toggle navigation">
-                            <!-- Hamburger menu icon -->
-                            <span class="[&>svg]:w-5">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="h-7 w-7">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                                </svg>
-                            </span>
-                        </button>
-                    </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/" class="text-xl font-bold text-primary">RakayaLibrary</a>
+                </div>
 
-                    <!-- Navigation links -->
-                    <div class="!visible hidden grow basis-[100%] items-center lg:!flex lg:basis-auto"
-                        id="navbarSupportedContentY" data-te-collapse-item>
-                        <ul class="mr-auto flex flex-col lg:flex-row" data-te-navbar-nav-ref>
-                            <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                                <a class="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white lg:p-2 [&.active]:text-black/90"
-                                    href="/" data-te-nav-link-ref data-te-ripple-init
-                                    data-te-ripple-color="light">Home</a>
-                            </li>
-                            <li class="mb-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                                <a class="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white lg:p-2 [&.active]:text-black/90"
-                                    href="{{ route('login') }}" data-te-nav-link-ref data-te-ripple-init
-                                    data-te-ripple-color="light">Sign-In</a>
-                            </li>
-                        </ul>
-                    </div>
+                <!-- Mobile menu button -->
+                <div class="flex lg:hidden">
+                    <button
+                        class="text-gray-600 hover:text-primary focus:outline-none"
+                        type="button" data-te-collapse-init data-te-target="#navbarSupportedContentY"
+                        aria-controls="navbarSupportedContentY" aria-expanded="false" aria-label="Toggle navigation">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Navigation links -->
+                <div class="hidden lg:flex items-center space-x-2"
+                    id="navbarSupportedContentY" data-te-collapse-item>
+                    <a class="nav-link" href="/" data-te-nav-link-ref>Home</a>
+                    <a class="nav-link bg-primary text-white hover:bg-secondary" href="{{ route('login') }}" data-te-nav-link-ref>Sign In</a>
                 </div>
             </nav>
+            
+            <!-- Mobile menu (hidden by default) -->
+            <div class="lg:hidden hidden" id="navbarSupportedContentY">
+                <div class="px-4 py-3 space-y-2">
+                    <a class="block nav-link" href="/">Home</a>
+                    <a class="block nav-link bg-primary text-white hover:bg-secondary" href="{{ route('login') }}">Sign In</a>
+                </div>
+            </div>
         </header>
     @endauth
     <!-- header ends here -->
-    <div class="bg-neutral-50 px-6 py-20 text-center text-neutral-800 dark:bg-neutral-700 dark:text-neutral-200">
+    
+    <main class="flex-grow container mx-auto px-6 py-8 lg:px-8">
         {{ $slot }}
-    </div>
+    </main>
 
     <!-- footer begins -->
-    <footer class="bg-neutral-50 px-6 py-20 text-center text-neutral-800 dark:bg-neutral-700 dark:text-neutral-200">
-        <p class="m-0">Copyright &copy; 2024 <a href="/" class="text-muted">RakayaLibrary</a>. All rights
-            reserved.
-        </p>
+    <footer class="bg-white border-t border-gray-200 mt-auto">
+        <div class="container mx-auto px-6 py-6 lg:px-8 text-center text-gray-600">
+            <p>Copyright &copy; 2024 <a href="/" class="text-primary hover:text-secondary transition-colors">RakayaLibrary</a>. All rights reserved.</p>
+        </div>
     </footer>
 
+    <!-- Add JavaScript for mobile menu toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('[data-te-target="#navbarSupportedContentY"]');
+            const mobileMenu = document.getElementById('navbarSupportedContentY');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -22,6 +22,7 @@ class BooksTable extends Component
         $invoice->name = $book->name;
         $invoice->author = $book->author;
         $invoice->user_id = auth()->user()->id;
+        $invoice->book_id = $book->id;
         $invoice->save();
 
         $book_status = Book::find($book->id);

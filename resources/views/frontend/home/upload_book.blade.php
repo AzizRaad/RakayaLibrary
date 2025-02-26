@@ -1,80 +1,63 @@
 <x-layout>
-    <section class="h-screen">
-        <div class="h-full dark:bg-neutral-700">
-            <!-- Left column container with background-->
-            <div class="g-6 flex h-full flex-wrap items-center justify-center ">
-                <!-- Right column container -->
-                <div class="mb-12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12">
-                    <form method="POST" action="{{ route('upload.book') }}">
-                        @csrf
-                        <div class="relative mb-6">
-                            <h4 class="mb-12 mt-1 pb-1 text-xl font-semibold text-white">
-                                Upload A New Book To The Library
-                            </h4>
-                        </div>
-                        <!-- Book info -->
-                        <div class="relative mb-6" data-te-input-wrapper-init>
-                            <input type="text" name="book_name" id="book_name"
-                                class="peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear dark:text-neutral-200"
-                                placeholder="Book Name" />
-                        </div>
-
-                        <!-- Author info -->
-                        <div class="relative mb-6" data-te-input-wrapper-init>
-                            <input type="text" name="author" id="author"
-                                class="peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear dark:text-neutral-200"
-                                placeholder="author" />
-                        </div>
-
-                        <!-- Status info -->
-                        <div class="relative mb-6" data-te-input-wrapper-init>
-                            <select
-                                class="peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear dark:text-neutral-200"
-                                name="status" id="status" data-te-select-init>
-                                <option value="Available">Available</option>
-                                <option value="Borrowed">Borrowed</option>
-                            </select>
-                        </div>
-
-                        <!-- Login button -->
-                        <div class="text-center lg:text-left">
-                            <button type="submit"
-                                class="border inline-block rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white"
-                                data-te-ripple-init data-te-ripple-color="light">
-                                Upload
-                            </button>
-                        </div>
-                    </form>
+    <section class="py-8">
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-sm overflow-hidden">
+            <div class="p-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800">Upload a Book</h2>
+                    <p class="text-gray-600 mt-2">Add a new book to the library</p>
                 </div>
+                
+                <form method="POST" action="{{ route('upload.book') }}" class="space-y-6">
+                    @csrf
+                    
+                    <!-- Book Name input -->
+                    <div>
+                        <label for="book_name" class="block text-sm font-medium text-gray-700 mb-1">Book Name</label>
+                        <input 
+                            type="text" 
+                            name="book_name" 
+                            id="book_name"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                            placeholder="Enter book title" 
+                        />
+                    </div>
+
+                    <!-- Author input -->
+                    <div>
+                        <label for="author" class="block text-sm font-medium text-gray-700 mb-1">Author</label>
+                        <input 
+                            type="text" 
+                            name="author" 
+                            id="author"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                            placeholder="Enter author name" 
+                        />
+                    </div>
+
+                    <!-- Status select -->
+                    <div>
+                        <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                        <select
+                            name="status" 
+                            id="status"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                        >
+                            <option value="Available">Available</option>
+                            <option value="Borrowed">Borrowed</option>
+                        </select>
+                    </div>
+
+                    <!-- Upload button -->
+                    <div>
+                        <button 
+                            type="submit"
+                            class="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-secondary transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                        >
+                            Upload Book
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
-
-
-    <form action="/uploadform" method="POST" enctype="multipart/form-data">
-        @csrf
-        <h1>Sign Up</h1>
-
-        <fieldset>
-
-            <legend><span class="number">1</span> Your basic info</legend>
-
-            <label for="book_name">Book Name:</label>
-            <input type="text" id="book_name" name="book_name">
-
-            <label for="author">Author:</label>
-            <input type="text" id="author" name="author">
-
-            <br>
-
-            <select name="status" id="status">
-                <option value="Available">Available</option>
-                <option value="Borrowed">Borrowed</option>
-            </select>
-
-        </fieldset>
-
-        <button type="submit">Upload</button>
-
-    </form>
 </x-layout>

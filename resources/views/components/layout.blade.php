@@ -40,95 +40,9 @@
 
 <body class="flex flex-col min-h-screen">
 
-    @auth
-        <header class="bg-white shadow-sm">
-            <!-- Navigation bar -->
-            <nav class="container mx-auto flex items-center justify-between py-4 px-6 lg:px-8"
-                data-te-navbar-ref>
-                <div class="flex items-center space-x-4">
-                    <a href="/" class="text-xl font-bold text-primary">RakayaLibrary</a>
-                </div>
+        <!-- Include the header component -->
+        <x-header />
 
-                <!-- Mobile menu button -->
-                <div class="flex lg:hidden">
-                    <button
-                        class="text-gray-600 hover:text-primary focus:outline-none"
-                        type="button" data-te-collapse-init data-te-target="#navbarSupportedContentY"
-                        aria-controls="navbarSupportedContentY" aria-expanded="false" aria-label="Toggle navigation">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                        </svg>
-                    </button>
-                </div>
-
-                <!-- Navigation links -->
-                <div class="hidden lg:flex items-center space-x-2"
-                    id="navbarSupportedContentY" data-te-collapse-item>
-                    <a class="nav-link" href="/" data-te-nav-link-ref>Home</a>
-                    <a class="nav-link" href="{{ route('invoice') }}" data-te-nav-link-ref>View Invoice</a>
-                    @if (Auth::user()->isAdmin())
-                        <a class="nav-link" href="{{ route('upload.book') }}" data-te-nav-link-ref>Upload Book</a>
-                    @endif
-                    <a class="nav-link bg-red-50 text-red-600 hover:bg-red-100" href="{{ route('logout') }}" data-te-nav-link-ref>Sign Out</a>
-                </div>
-            </nav>
-            
-            <!-- Mobile menu (hidden by default) -->
-            <div class="lg:hidden hidden" id="navbarSupportedContentY">
-                <div class="px-4 py-3 space-y-2">
-                    <a class="block nav-link" href="/">Home</a>
-                    <a class="block nav-link" href="{{ route('invoice') }}">View Invoice</a>
-                    @if (Auth::user()->isAdmin())
-                        <a class="block nav-link" href="{{ route('upload.book') }}">Upload Book</a>
-                    @endif
-                    <a class="block nav-link bg-red-50 text-red-600 hover:bg-red-100" href="{{ route('logout') }}">Sign Out</a>
-                </div>
-            </div>
-        </header>
-    @else
-        <header class="bg-white shadow-sm">
-            <!-- Navigation bar -->
-            <nav class="container mx-auto flex items-center justify-between py-4 px-6 lg:px-8"
-                data-te-navbar-ref>
-                <div class="flex items-center space-x-4">
-                    <a href="/" class="text-xl font-bold text-primary">RakayaLibrary</a>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="flex lg:hidden">
-                    <button
-                        class="text-gray-600 hover:text-primary focus:outline-none"
-                        type="button" data-te-collapse-init data-te-target="#navbarSupportedContentY"
-                        aria-controls="navbarSupportedContentY" aria-expanded="false" aria-label="Toggle navigation">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                        </svg>
-                    </button>
-                </div>
-
-                <!-- Navigation links -->
-                <div class="hidden lg:flex items-center space-x-2"
-                    id="navbarSupportedContentY" data-te-collapse-item>
-                    <a class="nav-link" href="/" data-te-nav-link-ref>Home</a>
-                    <a class="nav-link bg-primary text-white hover:bg-secondary" href="{{ route('login') }}" data-te-nav-link-ref>Sign In</a>
-                </div>
-            </nav>
-            
-            <!-- Mobile menu (hidden by default) -->
-            <div class="lg:hidden hidden" id="navbarSupportedContentY">
-                <div class="px-4 py-3 space-y-2">
-                    <a class="block nav-link" href="/">Home</a>
-                    <a class="block nav-link bg-primary text-white hover:bg-secondary" href="{{ route('login') }}">Sign In</a>
-                </div>
-            </div>
-        </header>
-    @endauth
-    <!-- header ends here -->
-    
     <main class="flex-grow container mx-auto px-6 py-8 lg:px-8">
         {{ $slot }}
     </main>
@@ -145,7 +59,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuButton = document.querySelector('[data-te-target="#navbarSupportedContentY"]');
             const mobileMenu = document.getElementById('navbarSupportedContentY');
-            
+
             if (mobileMenuButton && mobileMenu) {
                 mobileMenuButton.addEventListener('click', function() {
                     mobileMenu.classList.toggle('hidden');

@@ -19,7 +19,7 @@ use App\Livewire\InvoiceTable;
 */
 
 Route::get('/', function () {
-    return view('frontend.home.data_table');
+    return view('frontend.Gallery.home_page');
 })->middleware('auth');
 
 

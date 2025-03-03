@@ -18,9 +18,12 @@
                     <a class="nav-link flex items-center" href="{{ route('invoice') }}">
                         <i class="fas fa-file-invoice mr-1"></i> View Invoice
                     </a>
-                    @if (Auth::user()->isAdmin())
+                    @if (auth()->user()->hasRole('admin'))
                         <a class="nav-link flex items-center" href="{{ route('upload.book') }}">
                             <i class="fas fa-upload mr-1"></i> Upload Book
+                        </a>
+                        <a class="nav-link flex items-center" href="/superadmin">
+                            <i class="fas fa-user-cog mr-1"></i> Admin Dashboard
                         </a>
                     @endif
                     <a class="btn-primary flex items-center ml-2" href="{{ route('logout') }}">

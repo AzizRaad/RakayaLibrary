@@ -18,12 +18,8 @@ use App\Livewire\InvoiceTable;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.Gallery.home_page');
-})->middleware('auth');
-
-
 Route::controller(LoginController::class)
+    ->middleware('guest')
     ->group(function () {
         Route::get('/login', 'show')->name('login');
         Route::post('/login', 'login');
@@ -31,19 +27,26 @@ Route::controller(LoginController::class)
     });
 
 Route::controller(RegisterController::class)
+    ->middleware('guest')
     ->group(function () {
         Route::get('/register', 'show')->name('register');
         Route::post('/register', 'store');
     });
 
 Route::controller(BooksController::class)
+    ->middleware('hasRoles:admin')
     ->group(function () {
         Route::get('/uploadform', 'show')->name('upload.book');
         Route::post('/uploadform', 'store');
     });
 
 Route::controller(InvoiceController::class)
+    ->middleware('auth')
     ->group(function () {
         Route::get('/invoice', 'show')->name('invoice');
         Route::get('/download/invoice/{id}', 'store')->name('download.invoice');
     });
+
+Route::get('/', function () {
+    return view('frontend.Gallery.home_page');
+})->middleware('auth');

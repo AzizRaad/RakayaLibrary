@@ -77,7 +77,7 @@
                 @forelse ($books as $book)
                     <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300">
                         <div class="h-48 bg-gray-200 flex items-center justify-center">
-                            <i class="fas fa-book text-5xl text-gray-400"></i>
+                            <img src="{{ asset('storage/cover_images/' . $book->cover_image) }}" alt="{{ $book->name }}" class="w-full h-full object-cover">
                         </div>
                         <div class="p-4">
                             <div class="flex justify-between items-start mb-2">

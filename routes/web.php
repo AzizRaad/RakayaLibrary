@@ -25,7 +25,7 @@ Route::controller(LoginController::class)
         Route::post('/login', 'login');
     });
 
-    Route::get('/logout', 'destroy')->name('logout');
+    Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 
 Route::controller(RegisterController::class)
     ->middleware('guest')

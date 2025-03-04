@@ -23,8 +23,9 @@ Route::controller(LoginController::class)
     ->group(function () {
         Route::get('/login', 'show')->name('login');
         Route::post('/login', 'login');
-        Route::get('/logout', 'destroy')->name('logout');
     });
+
+    Route::get('/logout', 'destroy')->name('logout');
 
 Route::controller(RegisterController::class)
     ->middleware('guest')

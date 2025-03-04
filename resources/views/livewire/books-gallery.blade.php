@@ -95,7 +95,10 @@
                             <p class="text-gray-600 text-sm mb-3">By {{ $book->author }}</p>
 
                             <div class="flex justify-between items-center">
+                                @if (@isset($book->created_at))
                                 <span class="text-xs text-gray-500">Added: {{ $book->created_at->format('M d, Y') }}</span>
+                                @endif
+
                                 @if ($book->status == 'available')
                                     <button wire:click="addToCart({{ $book }})"
                                         class="px-3 py-1 bg-primary text-white rounded-lg hover:bg-secondary transition-colors text-sm">

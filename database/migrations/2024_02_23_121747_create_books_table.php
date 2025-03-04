@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('author');
             $table->enum('status',['available','borrowed'])->default('available');
+            $table->string('cover_image')->nullable();
             $table->timestamps();
         });
     }

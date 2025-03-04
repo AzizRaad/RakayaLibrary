@@ -33,13 +33,15 @@ Route::controller(RegisterController::class)
         Route::post('/register', 'store');
     });
 
+    //Used spatie permissions middleware to only allow admin Role users to access the upload form
 Route::controller(BooksController::class)
-    ->middleware('hasRoles:admin')
+    ->middleware('role:admin')
     ->group(function () {
         Route::get('/uploadform', 'show')->name('upload.book');
         Route::post('/uploadform', 'store');
     });
 
+    //Used auth middleware to only allow signed in users to access the invoice
 Route::controller(InvoiceController::class)
     ->middleware('auth')
     ->group(function () {
